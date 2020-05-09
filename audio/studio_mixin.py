@@ -9,7 +9,9 @@ from xblock.fragment import Fragment
 
 from audio.utils import load_resource, render_template
 from django.conf import settings
+import logging
 
+log = logging.getLogger(__name__)
 
 class StudioMixin(object):
     """
@@ -23,8 +25,8 @@ class StudioMixin(object):
 
         data = {
             'metadata_fields': json.dumps(self.editable_metadata_fields),
-            'zen': settings.ZENDESK_URL,
         }
+        log.info('ZEN', settings.ZENDESK_URL)
 
         template = render_template('templates/studio.html', data)
         frag = Fragment(template)

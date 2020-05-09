@@ -6,7 +6,7 @@ from xblock.core import XBlock
 from xblock.fields import Scope, String, Integer, Float, List, Dict, Boolean
 
 import audio.defaults as defaults
-
+from django.conf import settings
 
 class SettingsMixin(object):
     """
@@ -104,6 +104,7 @@ class SettingsMixin(object):
         metadata_field_editor_info['display_name'] = field.display_name
         metadata_field_editor_info['help'] = field.help
         metadata_field_editor_info['value'] = field.read_json(self)
+        metadata_field_editor_info['zen'] = settings.ZENDESK_URL
 
         # We support the following editors:
         # 1. A select editor for fields with a list of possible values (includes Booleans).
