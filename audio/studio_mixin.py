@@ -26,7 +26,8 @@ class StudioMixin(object):
         data = {
             'metadata_fields': json.dumps(self.editable_metadata_fields),
         }
-        log.info('ZEN', settings.ZENDESK_URL)
+        log.info('***HERE - Zen***')
+        log.info(settings.ZENDESK_URL)
 
         template = render_template('templates/studio.html', data)
         frag = Fragment(template)
