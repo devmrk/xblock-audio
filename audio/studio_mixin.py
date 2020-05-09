@@ -8,6 +8,7 @@ from xblock.core import XBlock
 from xblock.fragment import Fragment
 
 from audio.utils import load_resource, render_template
+from django.conf import settings
 
 
 class StudioMixin(object):
@@ -21,7 +22,8 @@ class StudioMixin(object):
         """
 
         data = {
-            'metadata_fields': json.dumps(self.editable_metadata_fields)
+            'metadata_fields': json.dumps(self.editable_metadata_fields),
+            'zen': settings.ZENDESK_URL,
         }
 
         template = render_template('templates/studio.html', data)
